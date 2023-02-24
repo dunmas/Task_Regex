@@ -5,6 +5,15 @@ with open("phonebook_raw.csv", encoding="utf-8") as f:
     rows = csv.reader(f, delimiter=",")
     contacts_list = list(rows)
 
+
+# Gользовательская функция для объединения записей телефонной книги в нашем задании
+def opt_concat(list1, list2, list_length):
+    for i in range(0, list_length):
+        if list2[i] != '':
+            list1[i] = list2[i]
+
+
+result_list = []
 for string in contacts_list:
     # Разбиваем ФИО контакта
     initials = ' '.join([string[0], string[1], string[2]])
@@ -29,4 +38,13 @@ for string in contacts_list:
     substitution = r'+7(\4)\5-\6-\7'
     string[5] = re.sub(phone_pattern, substitution, string[5]) + ext_phone
 
-#pprint(contacts_list)
+    match_flag = False
+    for res_string in result_list:
+        if res_string[0] == string[0] and res_string[1] == string[1]:
+            match_flag = True
+            opt_concat(res_string, string, len(string))
+
+    if not match_flag:
+        result_list.append(string)
+
+#pprint(result_list)
