@@ -1,4 +1,3 @@
-from pprint import pprint
 import csv
 import re
 with open("phonebook_raw.csv", encoding="utf-8") as f:
@@ -8,9 +7,9 @@ with open("phonebook_raw.csv", encoding="utf-8") as f:
 
 # Gользовательская функция для объединения записей телефонной книги в нашем задании
 def opt_concat(list1, list2, list_length):
-    for i in range(0, list_length):
-        if list2[i] != '':
-            list1[i] = list2[i]
+    for j in range(0, list_length):
+        if list2[j] != '':
+            list1[j] = list2[j]
 
 
 result_list = []
