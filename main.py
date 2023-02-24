@@ -47,4 +47,6 @@ for string in contacts_list:
     if not match_flag:
         result_list.append(string)
 
-#pprint(result_list)
+with open("phonebook.csv", "w") as f:
+    datawriter = csv.writer(f, delimiter=',')
+    datawriter.writerows(result_list)
